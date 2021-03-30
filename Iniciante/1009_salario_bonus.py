@@ -1,0 +1,5 @@
+n = input()
+sf = float(input())
+mtv = float(input())
+tot = sf + (mtv * 0.15)
+print(f'TOTAL = R$ {tot:.2f}')
