@@ -24,24 +24,28 @@ e menor que a soma dos outros dois lados.
 
 
 def validaTriangulo(ladoA: int, ladoB: int, ladoC: int) -> bool:
-    if (abs(ladoB - ladoC) < ladoA < ladoB + ladoC) \
-            and (abs(ladoA - ladoC) < ladoB < ladoA + ladoC) \
-            and (abs(ladoA - ladoB) < ladoC < ladoA + ladoB):
-        return True
+    if abs(ladoB - ladoC) < ladoA < ladoB + ladoC:
+        if abs(ladoA - ladoC) < ladoB < ladoA + ladoC:
+            if abs(ladoA - ladoB) < ladoC < ladoA + ladoB:
+                return True
     return False
 
 
-def verificaTriangulo(ladoA: int, ladoB: int, ladoC: int) -> int:
-    if not validaTriangulo(ladoA, ladoB, ladoC):
+def verificaTriangulo(lado_a: int, lado_b: int, lado_C: int) -> int:
+    if not validaTriangulo(lado_a, lado_b, lado_C):
         return 0
 
-    if ladoA == ladoB == ladoC:
+    isEquilatero = lado_a == lado_b == lado_C
+    isIsosceles = lado_a == lado_b or lado_a == lado_C or lado_b == lado_C
+    isEscaleno = lado_a != lado_b != lado_C
+
+    if isEquilatero:
         return 1
 
-    if ladoA == ladoB or ladoA == ladoC or ladoB == ladoC:
+    if isIsosceles:
         return 2
 
-    if ladoA != ladoB != ladoC:
+    if isEscaleno:
         return 3
 
 
